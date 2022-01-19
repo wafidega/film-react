@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosApiIntaces = axios.create({
-  baseURL: "http://localhost:3001/"
+  baseURL: "http://localhost:3001/",
 });
 
 // Add a request interceptor
@@ -10,7 +10,7 @@ axiosApiIntaces.interceptors.request.use(
     // Do something before request is sent
 
     config.headers = {
-      Authorization: `Bearer ${localStorage.getItem("token")}`
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
     return config;
   },

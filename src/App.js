@@ -1,25 +1,58 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import BasicReact from "./pages/basic/React";
-import Login from "./pages/auth/Login";
-import BasicLogin from "./pages/basic/Login";
-import BasicHome from "./pages/basic/Home";
-import BasicMovieDetail from "./pages/basic/DetailMovie";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Detail from "./pages/Detail";
+import Order from "./pages/Order";
+import Payment from "./pages/Payment";
+import PrivateRoute from "./helpers/routes/PrivateRoutes";
+import PublicRoute from "./helpers/routes/PublicRoute";
+import FormMovie from "./pages/FormMovie";
+import Profile from "./pages/Profile";
+import ProfileOrder from "./pages/ProfileOrder";
+import AdminPage from "./pages/AdminPage";
+import UpdateMovie from "./pages/UpdateMovie";
+import FormSchedule from "./pages/FormSchedule";
+import SearchMovie from "./pages/SearchMovie";
+
+// Redux
+import { Provider } from "react-redux";
+import { store, persistor } from "./stores/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route path="/basic-react" exact component={BasicReact} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/basic-login" exact component={BasicLogin} />
-          <Route path="/basic-home" exact component={BasicHome} />
-          {/* Cara kedua dan tiga */}
-          {/* <Route path="/basic-detail" exact component={BasicMovieDetail} /> */}
-          <Route path="/basic-detail/:movieId" exact component={BasicMovieDetail} />
-        </Switch>
-      </Router>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Router>
+            <Switch>
+              <Route path="/home" exact component={Home} />
+              <Route path="/login" exact component={Login} />
+              <Route path="/register" exact component={Register} />
+              <Route path="/detail" exact component={Detail} />
+              <Route path="/order" exact component={Order} />
+              <Route path="/payment" exact component={Payment} />
+              <Route path="/search" exact component={SearchMovie} />
+              <PublicRoute path="/form-movie" exact component={FormMovie} />
+              <PublicRoute
+                path="/form-schedule"
+                exact
+                component={FormSchedule}
+              />
+              <PublicRoute path="/profile" exact component={Profile} />
+              <PublicRoute
+                path="/profile-order"
+                exact
+                component={ProfileOrder}
+              />
+              <PublicRoute path="/admin-page" exact component={AdminPage} />
+              <PublicRoute path="/update-movie" exact component={UpdateMovie} />
+            </Switch>
+          </Router>
+        </PersistGate>
+      </Provider>
     );
   }
 }
