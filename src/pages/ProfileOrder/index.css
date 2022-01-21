@@ -114,6 +114,10 @@ main {
   color: #4e4b66;
 }
 
+.ticket-book {
+  margin-bottom: 20px;
+}
+
 .button-active {
   width: 50%;
   background-color: #00ba88 !important;

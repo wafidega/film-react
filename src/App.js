@@ -15,6 +15,7 @@ import AdminPage from "./pages/AdminPage";
 import UpdateMovie from "./pages/UpdateMovie";
 import FormSchedule from "./pages/FormSchedule";
 import SearchMovie from "./pages/SearchMovie";
+import TicketResult from "./pages/Ticket";
 
 // Redux
 import { Provider } from "react-redux";
@@ -49,6 +50,7 @@ class App extends Component {
               />
               <PublicRoute path="/admin-page" exact component={AdminPage} />
               <PublicRoute path="/update-movie" exact component={UpdateMovie} />
+              <PublicRoute path="/ticket" exact component={TicketResult} />
             </Switch>
           </Router>
         </PersistGate>

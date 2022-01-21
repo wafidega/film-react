@@ -15,6 +15,75 @@ import Google from "../../assets/image/google.png";
 import qs from "query-string";
 
 const Payment = (props) => {
+  // Take data from order
+  const dataOrder = props.history.location.state.setPayment;
+  console.log(dataOrder);
+  // Get data
+  const [dataMovie, setDataMovie] = useState([]);
+  const [dataSchedule, setDataSchedule] = useState([]);
+  const [dataProfile, setDataProfile] = useState([]);
+  const getDataMovieById = () => {
+    axios
+      .get(`movie/${dataOrder.movieId}`)
+      .then((res) => {
+        console.log(res);
+        setDataMovie(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+  const getScheduleById = () => {
+    axios
+      .get(`schedule/${dataOrder.scheduleId}`)
+      .then((res) => {
+        console.log(res);
+        setDataSchedule(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+  const getDataProfile = async () => {
+    try {
+      const result = await axios.get(`/user/user-byid/${dataOrder.userId}`);
+      setDataProfile(result.data.data[0]);
+      console.log(result);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  useEffect(() => {
+    getDataMovieById();
+    getScheduleById();
+    getDataProfile();
+  }, []);
+  console.log(dataMovie);
+  console.log(dataSchedule);
+  console.log(dataProfile);
+  // Handle Payment
+  const handlePayment = async () => {
+    try {
+      const dataPayment = {
+        userId: dataOrder.userId,
+        scheduleId: dataOrder.scheduleId,
+        movieId: dataOrder.movieId,
+        totalTicket: dataOrder.countSeat,
+        dateBooking: dataOrder.dateBooking,
+        timeBooking: dataOrder.timeBooking,
+        paymentMethod: "Midtrans",
+        seat: dataOrder.selectedSeat,
+      };
+      console.log(dataPayment);
+      const result = await axios.post(`/booking`, dataPayment);
+      console.log(result);
+      console.log(result.data.data.urlRedirect);
+      window.open(result.data.data.urlRedirect, "_blank");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Navbar></Navbar>
@@ -35,11 +104,11 @@ const Payment = (props) => {
                 </div>
                 <div class="col-sm-6">
                   <div className="payment-desc">
-                    <p>Tuesday, 07 July 2020 at 02:00pm</p>
-                    <p>Spider-Man: Homecoming</p>
-                    <p>CineOne21 Cinema</p>
-                    <p>3 pieces</p>
-                    <p>$30,00</p>
+                    <p>{dataOrder.dateBooking}</p>
+                    <p>{dataMovie.name}</p>
+                    <p>{dataSchedule.premiere}</p>
+                    <p>{dataOrder.countSeat} pieces</p>
+                    <p>Rp. {dataOrder.totalTicket}</p>
                   </div>
                 </div>
               </div>
@@ -47,6 +116,36 @@ const Payment = (props) => {
             <h3 class="payment-menthod-title">Available Payment</h3>
             <div class="payment-method">
               <div class="first__line">
+                {/* <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                  value="GooglrPay"
+                >
+                  <img
+                    src={Google}
+                    alt=""
+                    class="image-payment"
+                    alt="GooglePay"
+                  />
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                >
+                  <img src={Visa} alt="" class="image-payment" alt="Visa" />
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                >
+                  <img src={GoPay} alt="" class="image-payment" alt="GoPay" />
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                >
+                  <img src={Paypal} alt="" class="image-payment" alt="Paypal" />
+                </button> */}
                 <img src={Google} alt="" class="image-payment" />
                 <img src={Visa} alt="" class="image-payment" />
                 <img src={GoPay} alt="" class="image-payment" />
@@ -54,6 +153,30 @@ const Payment = (props) => {
               </div>
               <br />
               <div class="second__line">
+                {/* <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                >
+                  <img src={Dana} alt="" class="image-payment" alt="Dana" />
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                >
+                  <img src={Bca} alt="" class="image-payment" alt="Bca" />
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                >
+                  <img src={Bri} alt="" class="image-payment" alt="Bri" />
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary button-payment"
+                >
+                  <img src={Ovo} alt="" class="image-payment" alt="Ovo" />
+                </button> */}
                 <img src={Dana} alt="" class="image-payment" />
                 <img src={Bca} alt="" class="image-payment" />
                 <img src={Bri} alt="" class="image-payment" />
@@ -71,7 +194,8 @@ const Payment = (props) => {
                     type="text"
                     class="form-control"
                     placeholder="Name *"
-                    value=""
+                    value={dataProfile.first_name}
+                    disabled
                   />
                 </div>
                 <br />
@@ -81,25 +205,18 @@ const Payment = (props) => {
                     type="email"
                     class="form-control"
                     placeholder="Email"
-                    value=""
+                    value={dataProfile.email}
+                    disabled
                   />
                 </div>
                 <br />
-                <div class="form-group">
-                  <p>Phone Number</p>
-                  <div class="input-group mb-2 mr-sm-2">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">+61</div>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inlineFormInputGroupUsername2"
-                      placeholder="Number"
-                    />
-                  </div>
-                </div>
               </form>
+              <button
+                className="btn btn-danger payment-pay"
+                onClick={handlePayment}
+              >
+                Pay Now
+              </button>
             </div>
           </div>
         </div>

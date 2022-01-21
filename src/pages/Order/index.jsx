@@ -31,19 +31,37 @@ class Order extends Component {
         : "",
       dataMovie: [],
       dataSchedule: [],
+      userId: localStorage.getItem("id"),
     };
   }
   // Seat
-  selectedSeat = (data) => {
+  selectedSeat = (seat) => {
     console.log("user select seat");
-    console.log(data);
-    this.setState({
-      selectedSeat: [...this.state.selectedSeat, data],
-    });
+    console.log(seat);
+
+    if (this.state.selectedSeat.includes(seat)) {
+      const removeSeats = this.state.selectedSeat.filter((value) => {
+        return value !== seat;
+      });
+      this.setState({
+        selectedSeat: removeSeats,
+      });
+    } else {
+      if (this.state.selectedSeat.length >= 5) {
+        toast.error("You can only booking 5 or less", {
+          theme: "colored",
+        });
+      } else {
+        this.setState({
+          selectedSeat: [...this.state.selectedSeat, seat],
+        });
+      }
+    }
   };
   // get movie
   componentDidMount() {
     this.getDataMovieById();
+    this.getScheduleById();
   }
   getDataMovieById = () => {
     axios
@@ -58,6 +76,19 @@ class Order extends Component {
         console.log(err.response);
       });
   };
+  getScheduleById = () => {
+    axios
+      .get(`schedule/${this.state.scheduleId}`)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          dataSchedule: res.data.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
   // Handle Book and reset
   handleBooking = () => {
     if (this.state.selectedSeat.length < 1) {
@@ -65,6 +96,36 @@ class Order extends Component {
         theme: "colored",
       });
     } else {
+      const countSeat = this.state.selectedSeat.length;
+      const priceTicket = this.state.dataSchedule.map((item) => item.price);
+      const totalTicket = priceTicket[0] * countSeat;
+      const {
+        movieId,
+        scheduleId,
+        dateBooking,
+        timeBooking,
+        selectedSeat: seat,
+        userId,
+      } = this.state;
+      console.log(movieId, "Movie");
+      console.log(scheduleId, "Schedule");
+      console.log(dateBooking, "Date");
+      console.log(timeBooking, "Time");
+      console.log(userId, "User");
+      console.log(totalTicket);
+      const setPayment = {
+        movieId,
+        scheduleId,
+        dateBooking,
+        timeBooking,
+        selectedSeat: seat,
+        userId,
+        countSeat,
+        totalTicket,
+      };
+      setTimeout(() => {
+        this.props.history.push("/payment", { setPayment });
+      }, 3000);
     }
   };
 
@@ -83,6 +144,7 @@ class Order extends Component {
     const seatBook = this.state.selectedSeat.join(", ");
     const countSeat = this.state.selectedSeat.length;
     console.log(countSeat);
+    console.log(this.state.userId);
     return (
       <>
         <Navbar></Navbar>
@@ -168,7 +230,9 @@ class Order extends Component {
                         <p>{item.name}</p>
                       ))}
                       <p>{this.state.timeBooking}</p>
-                      <p>$10</p>
+                      {this.state.dataSchedule.map((item) => (
+                        <p>Rp.{item.price}</p>
+                      ))}
                       <p>{seatBook}</p>
                     </div>
                   </div>
@@ -178,7 +242,9 @@ class Order extends Component {
                       <h4>Price</h4>
                     </div>
                     <div className="col-sm-6">
-                      <h4 className="price">$30</h4>
+                      {this.state.dataSchedule.map((item) => (
+                        <h4 className="price">Rp. {item.price * countSeat}</h4>
+                      ))}
                     </div>
                   </div>
                 </div>
