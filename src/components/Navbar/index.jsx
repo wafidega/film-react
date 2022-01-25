@@ -45,16 +45,6 @@ class Navbar extends Component {
               </li>
             </ul>
             <ul className="navbar-item navbar-nav ms-auto">
-              <button
-                className="button__location btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Location{" "}
-              </button>
               <i className="bi bi-search"></i>
               <button
                 type="button"

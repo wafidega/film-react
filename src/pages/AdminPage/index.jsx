@@ -62,14 +62,19 @@ Chart.register(
 const AdminPage = () => {
   // Data Dashboard
   const [dataDashboard, setDataDashboard] = useState([]);
-  const [movieId, setMovieId] = useState("");
-  const [location, setLocation] = useState("");
-  const [premiere, setPremiere] = useState("");
+  // const [movieId, setMovieId] = useState("");
+  // const [location, setLocation] = useState("");
+  // const [premiere, setPremiere] = useState("");
+  const [dataFilter, setDataFIlter] = useState({
+    movieId: "",
+    location: "",
+    premiere: "",
+  });
 
   const getDataDashboard = async () => {
     try {
       const result = await axios.get(
-        `/booking/dashboard?movieId=${movieId}&location=${location}&premiere=${premiere}`
+        `/booking/dashboard?movieId=${dataFilter.movieId}&location=${dataFilter.location}&premiere=${dataFilter.premiere}`
       );
       setDataDashboard(result.data.data);
       console.log(result);
@@ -95,14 +100,40 @@ const AdminPage = () => {
     }
   };
 
+  // Handle Filter
+  const changeText = (event) => {
+    setDataFIlter({
+      ...dataFilter,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleFilter = () => {
+    getDataDashboard(dataFilter);
+  };
+
+  // Hanlde Reset
+  const [resetData, setResetData] = useState(false);
+
+  const handleReset = () => {
+    setDataFIlter({
+      movieId: "",
+      location: "",
+      premiere: "",
+    });
+    setResetData(true);
+  };
+
   // useEffect
   useEffect(() => {
     getDataDashboard();
     getDataMovie();
   }, []);
 
-  console.log(dataDashboard);
-  console.log(dataMovie);
+  // console.log(dataDashboard);
+  // console.log(dataMovie);
+  console.log(dataFilter);
+
   let setDataTotal = [];
   let setDataMonth = [];
   const dataMovieSales = dataDashboard.map((value) => {
@@ -146,21 +177,41 @@ const AdminPage = () => {
             <div class="col-md-4">
               <h3>Order Info</h3>
               <div class="content__order">
-                <select id="inputState" class="form-select">
+                <select
+                  id="inputState"
+                  class="form-select"
+                  name="movieId"
+                  onChange={changeText}
+                  value={dataFilter.movieId}
+                >
                   <option selected>Select Movie</option>
                   {dataMovie.map((item) => (
-                    <option>{item.name}</option>
+                    <option value={item.id} key={item.id}>
+                      {item.name}
+                    </option>
                   ))}
                 </select>
                 <br />
-                <select id="inputState" class="form-select">
+                <select
+                  id="inputState"
+                  class="form-select"
+                  name="premiere"
+                  onChange={changeText}
+                  value={dataFilter.premiere}
+                >
                   <option selected>Select Priemere</option>
                   <option value="Ebu.id">Ebu.id</option>
                   <option value="CineOne21">CineOne21</option>
                   <option value="hiflix">hiflix</option>
                 </select>
                 <br />
-                <select id="inputState" class="form-select">
+                <select
+                  id="inputState"
+                  class="form-select"
+                  name="location"
+                  onChange={changeText}
+                  value={dataFilter.location}
+                >
                   <option selected>Select Location</option>
                   <option value="Bogor">Bogor</option>
                   <option value="Depok">Depok</option>
@@ -168,13 +219,17 @@ const AdminPage = () => {
                   <option value="Bekasi">Bekasi</option>
                 </select>
                 <br />
-                <button type="submit" class="filter-button btn btn-primary">
+                <button
+                  type="submit"
+                  class="filter-button btn btn-primary"
+                  onClick={handleFilter}
+                >
                   filter Change
                 </button>
                 <br />
                 <br />
                 <button type="submit" class="reset-button btn btn-primary">
-                  Update Change
+                  Reset
                 </button>
               </div>
             </div>

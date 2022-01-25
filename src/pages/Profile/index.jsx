@@ -19,7 +19,6 @@ const Profile = (props) => {
   const [updateProfile, setUpdateProfile] = useState({
     first_name: "",
     last_name: "",
-    email: "",
   });
   // update password
   const [updatePassword, setUpdatePassword] = useState({
@@ -56,6 +55,7 @@ const Profile = (props) => {
         updateProfile
       );
       toast.success("Sucess Update Profile");
+      getDataProfile(user);
     } catch (error) {
       toast.warn(error.response.data.msg);
       console.log(error.response.data.msg);
@@ -100,7 +100,7 @@ const Profile = (props) => {
       );
       console.log(formData);
       toast.success("Sucess Update Image");
-      getDataProfile();
+      getDataProfile(user);
       console.log(resultImageUpdate);
     } catch (error) {
       console.log(error);
@@ -116,6 +116,8 @@ const Profile = (props) => {
     event.preventDefault();
     // console.log("Reset Form");
   };
+
+  console.log(dataProfile);
   return (
     <>
       <NavPor></NavPor>
@@ -192,6 +194,7 @@ const Profile = (props) => {
                       id="first_name"
                       name="first_name"
                       onChange={handleProfile}
+                      // value={dataProfile.first_name}
                     />
                   </div>
                   <div class="col-md-6">
@@ -204,6 +207,7 @@ const Profile = (props) => {
                       id="last_name"
                       name="last_name"
                       onChange={handleProfile}
+                      // value={dataProfile.last_name}
                     />
                   </div>
                   <div class="col-md-6">
@@ -213,9 +217,9 @@ const Profile = (props) => {
                     <input
                       type="email"
                       class="form-control"
-                      id="email"
-                      name="email"
-                      onChange={handleProfile}
+                      value={dataProfile.email}
+                      // onChange={handleProfile}
+                      disabled
                     />
                   </div>
                   {/* <div class="col-md-6">

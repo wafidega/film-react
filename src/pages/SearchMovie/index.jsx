@@ -17,9 +17,10 @@ class SearchMovie extends Component {
     this.state = {
       data: [],
       page: 1,
-      limit: 3,
+      limit: 20,
       pageInfo: {},
       month: "",
+      search: "",
     };
   }
   componentDidMount = () => {
