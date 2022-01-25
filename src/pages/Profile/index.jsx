@@ -48,8 +48,9 @@ const Profile = (props) => {
   }, [user]);
 
   // Update Profile
-  const handleUpdateProfile = async () => {
+  const handleUpdateProfile = async (event) => {
     try {
+      event.preventDefault();
       const response = await axios.patch(
         `/user/update_profile/${user}`,
         updateProfile
@@ -68,8 +69,9 @@ const Profile = (props) => {
   };
 
   // Update Password
-  const handleUpdatePassword = async (user) => {
+  const handleUpdatePassword = async (event) => {
     try {
+      event.preventDefault();
       const resultUpdatePassword = await axios.patch(
         `/user/update_password/${user}`,
         updatePassword

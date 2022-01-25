@@ -13,7 +13,7 @@ const TicketResult = (props) => {
   const getDataBookingByUser = async () => {
     try {
       const result = await axios.get(`/booking/user-id/${user}`);
-      setDataBookingByUser(result.data.data);
+      setDataBookingByUser(result.data.data[0]);
       console.log(result);
     } catch (error) {
       console.log(error.response);
@@ -48,7 +48,7 @@ const TicketResult = (props) => {
             <div className="ticket__result-body">
               <div className="ticket__result-body-space mb-4">
                 <h6>Movie</h6>
-                <span>Spiderman</span>
+                <span>{}</span>
               </div>
               <div className="row ticket__result-body-desc">
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
