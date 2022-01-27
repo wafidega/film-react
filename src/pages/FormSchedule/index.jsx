@@ -41,6 +41,10 @@ class FormSchedule extends Component {
     };
   }
   componentDidMount = () => {
+    const role = localStorage.getItem("role");
+    if (role !== "admin") {
+      this.props.history.push("/home");
+    }
     this.getDataSchedule();
     this.getDataMovie();
   };

@@ -42,6 +42,11 @@
   background-color: #9b59b6;
 }
 
+.button-showDetail {
+  background-color: white !important;
+  color: #5f2eea !important;
+}
+
 main {
   background-color: #f5f6f8;
   padding-bottom: 50px;

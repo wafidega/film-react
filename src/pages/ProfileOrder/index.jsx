@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
 import NavPor from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ProPic from "../../assets/image/profile.png";
 import axios from "../../utils/axios";
 import Pagination from "react-paginate";
 import { toast, ToastContainer } from "react-toastify";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-const ProfileOrder = () => {
+const ProfileOrder = (props) => {
   // get data
   const [dataProfile, setDataProfile] = useState([]);
   // update image
@@ -65,7 +67,26 @@ const ProfileOrder = () => {
       console.log(error.response);
     }
   };
-  console.log(dataBookingByUser);
+
+  // Handle Ticket
+  const handleTicket = (data) => {
+    console.log(data);
+    props.history.push("/ticket", data);
+  };
+
+  // Handle Status
+  const handleChangeStatus = async (id) => {
+    try {
+      console.log(id);
+      const result = await axios.get(`/booking/booking-status/${id}`);
+      console.log(result);
+      toast.success("Ticket is Active");
+      getDataBookingByUser();
+    } catch (error) {
+      toast.error("Ticket is used");
+    }
+  };
+
   return (
     <>
       <NavPor></NavPor>
@@ -139,7 +160,7 @@ const ProfileOrder = () => {
                     <br />
                     <div class="row">
                       <div class="col-md-6">
-                        <h5>Spider-Man Homecoming</h5>
+                        <h5>{item.name}</h5>
                       </div>
                       <div class="col-md-6">
                         <img src="assets/image/cine.png" alt="" />
@@ -152,6 +173,7 @@ const ProfileOrder = () => {
                           <button
                             type="submit"
                             class="button-inactive btn btn-primary"
+                            onClick={() => handleChangeStatus(item.id)}
                           >
                             Ticket Used
                           </button>
@@ -159,13 +181,19 @@ const ProfileOrder = () => {
                           <button
                             type="submit"
                             class="button-active btn btn-primary"
+                            onClick={() => handleChangeStatus(item.id)}
                           >
-                            Ticket is active
+                            Active a Ticket
                           </button>
                         )}
                       </div>
                       <div class="col-md-6">
-                        <a href="#"> Show detail</a>
+                        <button
+                          onClick={() => handleTicket(item.id)}
+                          className="button-showDetail btn btn-light"
+                        >
+                          Show Detail
+                        </button>
                       </div>
                     </div>
                   </div>

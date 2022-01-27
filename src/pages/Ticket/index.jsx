@@ -5,24 +5,27 @@ import Tickitz from "../../assets/image/ticketing-ticket.png";
 import { Download, Printer } from "react-bootstrap-icons";
 import "./index.css";
 import axios from "../../utils/axios";
+import qs from "query-string";
 
 const TicketResult = (props) => {
   // get Boooking by user id
-  const user = localStorage.getItem("id");
-  const [dataBookingByUser, setDataBookingByUser] = useState([]);
-  const getDataBookingByUser = async () => {
+  const [dataBookingById, setDataBookingById] = useState([]);
+  const databookingId = props.history.location.state;
+  console.log(databookingId);
+
+  const getDataBookingById = async () => {
     try {
-      const result = await axios.get(`/booking/user-id/${user}`);
-      setDataBookingByUser(result.data.data[0]);
-      console.log(result);
+      const result = await axios.get(`/booking/booking-id/${databookingId}`);
+      setDataBookingById(result.data.data[0]);
     } catch (error) {
       console.log(error.response);
     }
   };
-  console.log(dataBookingByUser);
+  console.log(dataBookingById);
   useEffect(() => {
-    getDataBookingByUser();
+    getDataBookingById();
   }, []);
+  console.log(props.location.state ? props.location.state.scheduleId : "");
   return (
     <>
       <Navbar />
@@ -37,7 +40,7 @@ const TicketResult = (props) => {
                   className="ticket__result-image img-fluid"
                   alt="Tickitz"
                 />
-                <h6>Admit One</h6>
+                <h6></h6>
                 <img
                   src={Tickitz}
                   className="ticket__result-image img-fluid"
@@ -48,16 +51,16 @@ const TicketResult = (props) => {
             <div className="ticket__result-body">
               <div className="ticket__result-body-space mb-4">
                 <h6>Movie</h6>
-                <span>{}</span>
+                <span>{dataBookingById.name}</span>
               </div>
               <div className="row ticket__result-body-desc">
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Date</h6>
-                  <span>2020-19-02</span>
+                  <span>{dataBookingById.dateBooking}</span>
                 </div>
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Time</h6>
-                  <span>10:000</span>
+                  <span>{dataBookingById.timeBooking}</span>
                 </div>
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Category</h6>
@@ -65,15 +68,15 @@ const TicketResult = (props) => {
                 </div>
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Count </h6>
-                  <span>2 Pieces</span>
+                  <span>{dataBookingById.totalTicket} Pieces</span>
                 </div>
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Seats</h6>
-                  <span>A1</span>
+                  <span>{dataBookingById.seat}</span>
                 </div>
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Price</h6>
-                  <span>10.000</span>
+                  <span>{dataBookingById.totalPayment}</span>
                 </div>
               </div>
               <div className="ticket__result-body-total d-flex d-md-none">

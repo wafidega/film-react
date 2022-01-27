@@ -36,7 +36,10 @@ const Profile = (props) => {
     try {
       const result = await axios.get(`/user/user-byid/${id}`);
       setDataProfile(result.data.data[0]);
-      console.log(result);
+      setUpdateProfile({
+        first_name: result.data.data[0].first_name,
+        last_name: result.data.data[0].last_name,
+      });
     } catch (error) {
       console.log(error.response);
     }
@@ -101,7 +104,6 @@ const Profile = (props) => {
       console.log(formData);
       toast.success("Sucess Update Image");
       getDataProfile(user);
-      console.log(resultImageUpdate);
     } catch (error) {
       console.log(error);
       toast.warn("Update Gagal");
@@ -194,7 +196,7 @@ const Profile = (props) => {
                       id="first_name"
                       name="first_name"
                       onChange={handleProfile}
-                      // value={dataProfile.first_name}
+                      value={updateProfile.first_name}
                     />
                   </div>
                   <div class="col-md-6">
@@ -207,7 +209,7 @@ const Profile = (props) => {
                       id="last_name"
                       name="last_name"
                       onChange={handleProfile}
-                      // value={dataProfile.last_name}
+                      value={updateProfile.last_name}
                     />
                   </div>
                   <div class="col-md-6">

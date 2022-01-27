@@ -37,6 +37,10 @@ class FormMovie extends Component {
     };
   }
   componentDidMount = () => {
+    const role = localStorage.getItem("role");
+    if (role !== "admin") {
+      this.props.history.push("/home");
+    }
     this.getDataMovie();
   };
   getDataMovie = () => {

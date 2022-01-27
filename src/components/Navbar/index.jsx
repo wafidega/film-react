@@ -48,7 +48,7 @@ class Navbar extends Component {
               <i className="bi bi-search"></i>
               <button
                 type="button"
-                className="btn btn-primary button__signup"
+                className="btn btn-primary button__logout"
                 onClick={this.handleLogout}
               >
                 Logout

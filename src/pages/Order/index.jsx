@@ -107,12 +107,6 @@ class Order extends Component {
         selectedSeat: seat,
         userId,
       } = this.state;
-      console.log(movieId, "Movie");
-      console.log(scheduleId, "Schedule");
-      console.log(dateBooking, "Date");
-      console.log(timeBooking, "Time");
-      console.log(userId, "User");
-      console.log(totalTicket);
       const setPayment = {
         movieId,
         scheduleId,
@@ -135,16 +129,8 @@ class Order extends Component {
     });
   };
   render() {
-    // console.log(this.state.selectedSeat);
-    // console.log(this.state.dateBooking);
-    // console.log(this.state.timeBooking);
-    // console.log(this.state.movieId);
-    console.log(this.state.scheduleId);
-    console.log(this.state.dataMovie);
     const seatBook = this.state.selectedSeat.join(", ");
     const countSeat = this.state.selectedSeat.length;
-    console.log(countSeat);
-    console.log(this.state.userId);
     return (
       <>
         <Navbar></Navbar>
@@ -164,7 +150,7 @@ class Order extends Component {
                     <div className="button-order col-sm-6">
                       <button
                         type="button"
-                        className="button__signup btn btn-primary"
+                        className="button__changeMovie btn btn-primary"
                       >
                         Change Your Movie
                       </button>
@@ -193,24 +179,6 @@ class Order extends Component {
                   >
                     Reset Seat
                   </button>
-                  <div className="seat-rows row">
-                    <div className="col-sm-6">
-                      <button
-                        type="button"
-                        className="button__signup btn btn-primary"
-                      >
-                        Change Your Movie
-                      </button>
-                    </div>
-                    <div className="col-sm-6">
-                      <button
-                        type="button"
-                        class="button__signup btn btn-primary"
-                      >
-                        Checkout Now
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div className="col-md-6">

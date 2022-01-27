@@ -17,10 +17,13 @@
   background-color: #5f2eea !important;
 }
 
+.button__month {
+  margin: 10px;
+}
 .banner-caption h1 {
   font-size: 56px;
   font-weight: 700;
-  color: #5f2eea;
+  color: #5f2eea !important;
 }
 
 .banner-caption h1 {
@@ -44,7 +47,7 @@
   text-align: left;
   margin-left: 50px;
   margin-top: 50px;
-  color: #8e44ad;
+  color: #5f2eea !important;
 }
 
 .comic__image {
@@ -69,14 +72,14 @@
 }
 
 .upcoming .month .button__first__month {
-  background-color: #8e44ad;
-  border-color: #8e44ad;
+  background-color: #5f2eea !important;
+  border-color: #5f2eea !important;
 }
 
 .upcoming .month .button__month {
   background-color: white;
-  border-color: #8e44ad;
-  color: #8e44ad;
+  border-color: #5f2eea !important;
+  color: #5f2eea !important;
 }
 
 .upcoming .upcoming__image {
@@ -104,8 +107,8 @@
 
 .upcoming .upcoming__image .card-group .card .button__upcoming {
   background-color: white;
-  border-color: #8e44ad;
-  color: #8e44ad;
+  border-color: #5f2eea !important;
+  color: #5f2eea !important;
 }
 
 .content__banner {

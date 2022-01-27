@@ -17,9 +17,9 @@ main {
 .button-order {
   padding-left: 50px;
 }
-.button__signup {
-  background-color: #f5f6f8;
-  color: #9b59b6;
+.button__changeMovie {
+  background-color: #5f2eea !important;
+  color: white;
   width: 100% !important;
 }
 .seat-order {

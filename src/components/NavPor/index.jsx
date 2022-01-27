@@ -33,9 +33,9 @@ class NavPor extends Component {
             </a>
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a href="/home" className="header-home nav-link">
+                <a href="/admin-page" className="header-home nav-link">
                   {" "}
-                  home
+                  Dashboard
                 </a>
               </li>
               <li className="nav-item">
@@ -58,20 +58,10 @@ class NavPor extends Component {
               </li>
             </ul>
             <ul className="navbar-item navbar-nav ms-auto">
-              <button
-                className="button__location btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Location{" "}
-              </button>
               <i className="bi bi-search"></i>
               <button
                 type="button"
-                className="btn btn-primary button__signup"
+                className="btn btn-primary button__logout"
                 onClick={this.handleLogout}
               >
                 Logout

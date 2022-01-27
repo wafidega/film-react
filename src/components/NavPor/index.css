@@ -41,3 +41,14 @@
 .button__signup:hover {
   background-color: #9b59b6;
 }
+.button__logout {
+  margin-right: 100px;
+  background-color: #5f2eea !important;
+  border-color: #5f2eea !important;
+  border-radius: 20px;
+  height: 40px;
+  width: 120px;
+  left: 0px;
+  top: 0px;
+  border-radius: 4px;
+}
