@@ -23,11 +23,9 @@
   <h3 align="center">MOVIETICKZ</h3>
 </div>
 
-<!-- <p align="center">
-  <!-- <img src='https://imgur.com/w9tZDqi' border='0' alt='Logo'/> -->
-</p> -->
-
-![Logo](https://imgur.com/w9tZDqi)
+<p align="center">
+  <img src='https://i.postimg.cc/bJWkbY8F/panda-coffe.png' border='0' alt='Logo'/>
+</p>
 
 <!-- ABOUT THE PROJECT -->
 
