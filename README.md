@@ -24,29 +24,53 @@
 </div>
 
 <p align="center">
-  <img src='' border='0' alt='panda-coffe'/>
+  <img src='https://imgur.com/w9tZDqi' border='0' alt='panda-coffe'/>
 </p>
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
+MOVIETICKZ is web-based online movie booking aplication
+
 ### Built With
 
-Front-End website kami menggunakan teknologi seperti berikut:
+Tech:
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML?retiredLocale=id)
 - [CSS](https://developer.mozilla.org/id/docs/Web/CSS)
 - [Javascript](https://www.javascript.com/)
-- [ReactJs](https://nextjs.org/docs/getting-started)
+- [ReactJs](https://reactjs.org/docs/getting-started.html)
 - [React Redux](https://react-redux.js.org/introduction/getting-started)
 - [Bootstarp](https://getbootstrap.com/)
 
-### Installation
+### Feature
 
-## License
+Feature:
 
-Distributed under the MIT License.
+1. Login and Register(Authentification)
+2. Booking Movie
+3. Dashboard (admin only)
+4. Manage Movie (Admin Only)
+
+## Demo
+
+(Development)
+
+## Screenshoot
+
+<p align="center">
+  <img src='https://imgur.com/jjDjWMS' border='0' alt='panda-coffe'/>
+</p>
+<p align="center">
+  <img src='https://imgur.com/0cGDOVO' border='0' alt='panda-coffe'/>
+</p>
+<p align="center">
+  <img src='https://imgur.com/WJhax5s' border='0' alt='panda-coffe'/>
+</p>
+<p align="center">
+  <img src='https://imgur.com/9CMbuQZ' border='0' alt='panda-coffe'/>
+</p>
 
 <!-- CONTACT -->
 <p align="right">(<a href="#top">back to top</a>)</p>
