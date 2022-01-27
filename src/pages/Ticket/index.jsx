@@ -56,7 +56,9 @@ const TicketResult = (props) => {
               <div className="row ticket__result-body-desc">
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Date</h6>
-                  <span>{dataBookingById.dateBooking}</span>
+                  <span>
+                    {new Date(dataBookingById.dateBooking).toDateString()}
+                  </span>
                 </div>
                 <div className="col-md-3 me-2 ticket__result-body-space mb-3">
                   <h6>Time</h6>
