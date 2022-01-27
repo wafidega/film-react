@@ -24,14 +24,12 @@
 </div>
 
 <p align="center">
-  <img src='https://i.postimg.cc/bJWkbY8F/panda-coffe.png' border='0' alt='panda-coffe'/>
+  <img src='' border='0' alt='panda-coffe'/>
 </p>
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-
-Tuntutan masyarakat yang menginginkan kemudahan dalam setiap aktivitas online, oleh karena itu dikembangkan aplikasi coffe shop online. Dengan tersedianya layanan melalui internet, pengunjung dapat mengetahui informasi tentang profile PandaCoffeShop , produk, customer service dan pemesanan tempat. Dengan aplikasi ini diharapkan akan memaksimalkan program pemasaran PandaCoffeShop
 
 ### Built With
 
@@ -40,17 +38,11 @@ Front-End website kami menggunakan teknologi seperti berikut:
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML?retiredLocale=id)
 - [CSS](https://developer.mozilla.org/id/docs/Web/CSS)
 - [Javascript](https://www.javascript.com/)
-- [NextJs](https://nextjs.org/docs/getting-started)
+- [ReactJs](https://nextjs.org/docs/getting-started)
 - [React Redux](https://react-redux.js.org/introduction/getting-started)
 - [Bootstarp](https://getbootstrap.com/)
 
 ### Installation
-
-1. Clone Atau Download Repo ini:
-   https://github.com/riyaraa/pandaCoffee-frontend.git
-2. Extrak File Tersebut
-3. Npm install
-4. Npm run dev
 
 ## License
 
