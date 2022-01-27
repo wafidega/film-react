@@ -23,10 +23,11 @@
   <h3 align="center">MOVIETICKZ</h3>
 </div>
 
-<p align="center">
+<!-- <p align="center">
   <!-- <img src='https://imgur.com/w9tZDqi' border='0' alt='Logo'/> -->
-  ![Logo](https://imgur.com/w9tZDqi)
-</p>
+</p> -->
+
+![Logo](https://imgur.com/w9tZDqi)
 
 <!-- ABOUT THE PROJECT -->
 
