@@ -24,7 +24,8 @@
 </div>
 
 <p align="center">
-  <img src='https://imgur.com/w9tZDqi' border='0' alt='Logo'/>
+  <!-- <img src='https://imgur.com/w9tZDqi' border='0' alt='Logo'/> -->
+  ![Logo](https://imgur.com/w9tZDqi)
 </p>
 
 <!-- ABOUT THE PROJECT -->
