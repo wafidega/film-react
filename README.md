@@ -24,7 +24,7 @@
 </div>
 
 <p align="center">
-  <img src='https://i.postimg.cc/bJWkbY8F/panda-coffe.png' border='0' alt='Logo'/>
+  <img src='https://i.postimg.cc/CRdjrLqH/Vector.png' border='0' alt='Logo'/>
 </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -60,16 +60,16 @@ Feature:
 ## Screenshoot
 
 <p align="center">
-  <img src='https://imgur.com/jjDjWMS' border='0' alt='Screenshoot'/>
+  <img src='https://i.postimg.cc/tnJkNCqf/Capture.png' border='0' alt='Screenshoot'/>
 </p>
 <p align="center">
-  <img src='https://imgur.com/0cGDOVO' border='0' alt='Screenshoot'/>
+  <img src='https://i.postimg.cc/2qnK16y7/Capture2.png' border='0' alt='Screenshoot'/>
 </p>
 <p align="center">
-  <img src='https://imgur.com/WJhax5s' border='0' alt='Screenshoot'/>
+  <img src='https://i.postimg.cc/ykNtLsp7/Capture3.png' border='0' alt='Screenshoot'/>
 </p>
 <p align="center">
-  <img src='https://imgur.com/9CMbuQZ' border='0' alt='Screenshoot'/>
+  <img src='https://i.postimg.cc/Ppz9Rxk5/Capture4.png' border='0' alt='Screenshoot'/>
 </p>
 
 <!-- CONTACT -->
